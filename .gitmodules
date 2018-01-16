@@ -1,0 +1,3 @@
+[submodule "craycoin"]
+	path = craycoin
+	url = https://github.com/mattgoody/craycoin.git

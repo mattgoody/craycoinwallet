@@ -16,12 +16,21 @@ include_directories(${CMAKE_BINARY_DIR}
     cryptonote/include
     cryptonote/src)
 
-find_package(Qt5Gui REQUIRED)
+
+set (CMAKE_MODULE_PATH "C:\\Qt\\Qt5.10.0\\msvc2017_64\\")
+SET(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} "C:/boost_1_66_0")
+SET(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} "C:/boost_1_66_0")
+SET(BOOST_LIBRARYDIR "C:/boost_1_66_0/stage/lib")
+SET(Boost_DEBUG ON)
+
+find_package(Qt5Core REQUIRED)
+
 find_package(Qt5Widgets REQUIRED)
+
 
 set(Boost_USE_STATIC_LIBS ON)
 if(WIN32)
-  set(Boost_USE_STATIC_RUNTIME OFF)
+  set(Boost_USE_STATIC_RUNTIME ON)
 else(WIN32)
   set(Boost_USE_STATIC_RUNTIME ON)
 endif(WIN32)
@@ -34,8 +43,8 @@ endif ()
 include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARY_DIRS})
 
-set(VERSION "")
-configure_file("cryptonote/src/version.h.in" "version.h")
+set(VERSION "1")
+configure_file("craycoin/src/version.h.in" "version.h")
 configure_file("src/CryptoNoteWalletConfig.h.in" "CryptoNoteWalletConfig.h")
 
 add_definitions(-DGIT_REVISION=\"${GIT_REVISION}\")
